@@ -9,7 +9,7 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => (
-  <div className="w-full px-1 text-gray-700 antialiased">
+  <div className="w-full bg-gray-100 px-1 text-gray-700 antialiased">
     {props.meta}
 
     <div className="mx-auto max-w-screen-md">
@@ -27,24 +27,24 @@ const Main = (props: IMainProps) => (
                 href="/"
                 className="border-none text-gray-700 hover:text-gray-900"
               >
-                Home
+                Pet Pen
               </Link>
             </li>
             <li className="mr-6">
               <Link
-                href="/about/"
+                href="/shop/"
                 className="border-none text-gray-700 hover:text-gray-900"
               >
-                About
+                Shop
               </Link>
             </li>
             <li className="mr-6">
-              <a
+              <Link
                 className="border-none text-gray-700 hover:text-gray-900"
-                href="https://github.com/ixartz/Next-js-Boilerplate"
+                href="/about/"
               >
-                GitHub
-              </a>
+                About
+              </Link>
             </li>
             <li className="mr-6">
               <Link

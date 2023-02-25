@@ -2,18 +2,16 @@ import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
 const About = () => (
-  <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
+  <Main meta={<Meta title="About Monikers" description="About us" />}>
     <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga
-      recusandae quidem. Quaerat molestiae blanditiis doloremque possimus labore
-      voluptatibus distinctio recusandae autem esse explicabo molestias officia
-      placeat, accusamus aut saepe.
+      Monikers are cute little pals who will keep you company during normal
+      computer use. Let your moniker hang out on one of your unused monitors, or
+      take them with you on your phone!
     </p>
     <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga
-      recusandae quidem. Quaerat molestiae blanditiis doloremque possimus labore
-      voluptatibus distinctio recusandae autem esse explicabo molestias officia
-      placeat, accusamus aut saepe.
+      Monikers are just like a real pet. They will welcome you online, relax
+      with you, and play fun games with you that will allow you to customize
+      your Moniker and their enviornment! Collect a bunch of Monkiers!
     </p>
   </Main>
 );

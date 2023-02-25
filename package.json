@@ -22,11 +22,16 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@react-three/drei": "^9.56.27",
+    "@react-three/fiber": "^8.11.5",
+    "@react-three/postprocessing": "^2.7.0",
+    "@types/three": "^0.149.0",
     "next": "^13.2.1",
     "next-seo": "^5.15.0",
     "next-sitemap": "^3.1.52",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "three": "^0.150.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
