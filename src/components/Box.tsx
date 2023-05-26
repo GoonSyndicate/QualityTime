@@ -1,28 +1,36 @@
+import type { MeshProps, RootState } from '@react-three/fiber';
 import { useFrame } from '@react-three/fiber';
 import React, { useRef, useState } from 'react';
+import type { Mesh } from 'three';
 
-function Box(props) {
-  // This reference gives us direct access to the THREE.Mesh object
-  const ref = useRef();
-  // Hold state for hovered and clicked events
-  const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (ref.current.rotation.x += delta));
-  // Return the view, these are regular Threejs elements expressed in JSX
+interface BoxProps extends MeshProps {
+  // define additional props here
+}
+
+const Box: React.FC<BoxProps> = (props) => {
+  const meshRef = useRef<Mesh | null>(null);
+  const [hovered, setHovered] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
+  useFrame((_state: RootState, delta: number) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta;
+    }
+  });
+
   return (
     <mesh
       {...props}
-      ref={ref}
-      scale={clicked ? 1.5 : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}
+      ref={meshRef}
+      scale={clicked ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+      onClick={() => setClicked(!clicked)}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
     </mesh>
   );
-}
+};
 
 export default Box;

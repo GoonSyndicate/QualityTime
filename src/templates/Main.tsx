@@ -12,7 +12,7 @@ const Main = (props: IMainProps) => (
   <div className="w-full bg-gray-100 px-1 text-gray-700 antialiased">
     {props.meta}
 
-    <div className="mx-auto max-w-screen-md">
+    <div className="mx-auto">
       <header className="border-b border-gray-300">
         <div className="pt-16 pb-8">
           <h1 className="text-3xl font-bold text-gray-900">
@@ -66,7 +66,7 @@ const Main = (props: IMainProps) => (
         </nav>
       </header>
 
-      <main className="content py-5 text-xl">{props.children}</main>
+      <main className="content w-full py-5 text-xl">{props.children}</main>
 
       <footer className="border-t border-gray-300 py-8 text-center text-sm">
         © Copyright {new Date().getFullYear()} {AppConfig.title}. Made with{' '}

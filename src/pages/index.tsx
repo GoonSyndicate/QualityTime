@@ -1,6 +1,7 @@
 import { Environment, Grid, OrbitControls, Stage } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
+import { Color } from 'three';
 
 import Kamdo from '@/components/Kamdo';
 import { Meta } from '@/layouts/Meta';
@@ -8,6 +9,7 @@ import { Main } from '@/templates/Main';
 
 const Index = () => {
   // const router = useRouter();
+  const color = new Color(0.5, 0.5, 1);
 
   return (
     <Main
@@ -18,14 +20,14 @@ const Index = () => {
         />
       }
     >
-      <div className="h-96">
+      <div className=" h-full w-full">
         <Canvas gl={{ logarithmicDepthBuffer: true }}>
           <fog attach="fog" args={['black', 15, 21.5]} />
           <Stage
             intensity={0.5}
             environment="city"
             shadows={{ type: 'accumulative', bias: -0.001 }}
-            adjustCamera={true}
+            adjustCamera={false}
           >
             <Kamdo rotation={[0, Math.PI, 0]} />
           </Stage>
@@ -37,7 +39,7 @@ const Index = () => {
             cellThickness={0.6}
             sectionSize={3.3}
             sectionThickness={1.5}
-            sectionColor={[0.5, 0.5, 10]}
+            sectionColor={color}
             fadeDistance={30}
           />
           <OrbitControls

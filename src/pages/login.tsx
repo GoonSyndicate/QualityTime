@@ -7,7 +7,7 @@ import {
 } from '@material-tailwind/react';
 import React from 'react';
 
-export default function LoginPage() {
+export default function Login() {
   return (
     <div className="container mx-auto flex justify-center before:block before:h-10 before:content-['']">
       <Card color="white" shadow={false} className="w-2/4 content-center">
