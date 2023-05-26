@@ -25,7 +25,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     // logged in even if they refresh the page or close and reopen their browser.
 
     // In order to log in, change "pasword" below to "password"
-    handleLogin('admin', 'password');
+    handleLogin('admn', 'password');
   }, []);
 
   return (
