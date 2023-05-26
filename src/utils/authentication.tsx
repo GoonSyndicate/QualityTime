@@ -1,10 +1,8 @@
 // utils/authentication.js
 
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export function useAuthentication() {
-  const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   async function handleLogin(username: string, password: string) {
@@ -20,7 +18,6 @@ export function useAuthentication() {
 
     if (response.ok) {
       setIsAuthenticated(true);
-      router.push('/');
       return true;
     }
 
@@ -40,7 +37,6 @@ export function useAuthentication() {
 
     if (response.ok) {
       setIsAuthenticated(false);
-      router.push('/login');
     }
   }
 
