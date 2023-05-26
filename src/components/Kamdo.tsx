@@ -3,7 +3,7 @@ import type { GroupProps } from '@react-three/fiber';
 import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import React, { useRef } from 'react';
-import type { Group, Mesh, MeshBasicMaterial, PointLight } from 'three';
+import type { Group, MeshBasicMaterial } from 'three';
 import { Color } from 'three';
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 
@@ -11,24 +11,25 @@ interface KamdoProps extends GroupProps {
   // define additional props here
 }
 
+interface CustomGLTFResult extends GLTF {
+  nodes: {
+    body001: THREE.Mesh;
+    head001: THREE.Mesh;
+    stripe001: THREE.Mesh;
+  };
+  materials: {
+    Body: THREE.Material;
+    Head: THREE.Material;
+  };
+}
+
 const Kamdo: React.FC<KamdoProps> = (props) => {
   const headRef = useRef<Group | null>(null);
   const stripeRef = useRef<MeshBasicMaterial | null>(null);
-  const lightRef = useRef<PointLight | null>(null);
-
+  const lightRef = useRef<THREE.PointLight | null>(null);
   const gltf = useGLTF(
     '/s2wt_kamdo_industrial_divinities-transformed.glb'
-  ) as GLTF;
-
-  const body001 = gltf.scene.children.find(
-    (child) => child.name === 'body001'
-  ) as Mesh;
-  const head001 = gltf.scene.children.find(
-    (child) => child.name === 'head001'
-  ) as Mesh;
-  const stripe001 = gltf.scene.children.find(
-    (child) => child.name === 'stripe001'
-  ) as Mesh;
+  ) as CustomGLTFResult;
 
   useFrame((state, delta) => {
     const t = (1 + Math.sin(state.clock.elapsedTime * 2)) / 2;
@@ -51,38 +52,30 @@ const Kamdo: React.FC<KamdoProps> = (props) => {
     }
   });
 
-  // Assuming that 'body001', 'head001' and 'stripe001' are the names of meshes in the GLTF scene
-
   return (
     <group {...props}>
-      {body001 && (
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={gltf.nodes.body001.geometry}
+        material={gltf.materials.Body}
+      />
+      <group ref={headRef}>
         <mesh
           castShadow
           receiveShadow
-          geometry={body001.geometry}
-          material={body001.material}
+          geometry={gltf.nodes.head001.geometry}
+          material={gltf.materials.Head}
         />
-      )}
-      <group ref={headRef}>
-        {head001 && (
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={head001.geometry}
-            material={head001.material}
+        <mesh castShadow receiveShadow geometry={gltf.nodes.stripe001.geometry}>
+          <meshBasicMaterial ref={stripeRef} toneMapped={false} />
+          <pointLight
+            ref={lightRef}
+            intensity={1}
+            color="purple"
+            distance={2.5}
           />
-        )}
-        {stripe001 && (
-          <mesh castShadow receiveShadow geometry={stripe001.geometry}>
-            <meshBasicMaterial ref={stripeRef} toneMapped={false} />
-            <pointLight
-              ref={lightRef}
-              intensity={1}
-              color="purple"
-              distance={2.5}
-            />
-          </mesh>
-        )}
+        </mesh>
       </group>
     </group>
   );
