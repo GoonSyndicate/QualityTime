@@ -3,8 +3,10 @@ name: CI
 on:
   push:
     branches: [main]
+    token: ${{ secrets.QUALITYTIMETOKEN }}
   pull_request:
     branches: [main]
+    token: ${{ secrets.QUALITYTIMETOKEN }}
 
 jobs:
   build:
