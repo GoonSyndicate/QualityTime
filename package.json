@@ -96,7 +96,8 @@
   },
   "release": {
     "branches": [
-      "main"
+      "main",
+      "master"
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",
@@ -114,7 +115,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GoonSyndicate/QualityTime.git"
+    "url": "https://github.com/GoonSyndicate/QualityTime.git"
   },
   "author": "AlphaNumericPencil (https://github.com/AlphaNumericPencil)"
 }
