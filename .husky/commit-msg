@@ -1,5 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-#this is fucking stupid:
+#this is fucking stupid.
+#It lint commits before they are created by adding a hook to git commit
+#basically, dont try to format it beyond what it tells you to do. That includes capital letters lol.
  npx --no -- commitlint --edit $1
