@@ -33,4 +33,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.QUALITYTIMETOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
-# just work 4head
+# just work lol
