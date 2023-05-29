@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/GoonSyndicate/QualityTime/compare/v1.0.0...v1.1.0) (2023-05-29)
+
+
+### Features
+
+* **register login firebase authentication:** firebase auth added ([ca57ec3](https://github.com/GoonSyndicate/QualityTime/commit/ca57ec3c766b3db8aa0b93c35fb1603b3a851760))
+
 # 1.0.0 (2023-05-26)
 
 
